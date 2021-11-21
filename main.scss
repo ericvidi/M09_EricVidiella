@@ -1,0 +1,178 @@
+$color-gray: #444;
+$margin-top: 40px;
+$black: black;
+
+body {
+    margin: 40px;
+}
+
+/*CSS GRID*/
+
+.sidebar {
+    grid-area: sidebar;
+}
+  
+.sidebar2 {
+    grid-area: sidebar2;
+}
+  
+.content {
+    grid-area: content;
+}
+  
+.header {
+    grid-area: header;
+}
+  
+.footer {
+    grid-area: footer;
+}
+
+.contenedor {
+    margin-top: $margin-top;
+    background-color: #fff;
+    grid-template-columns: 20% auto 20%;
+    color: $color-gray;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+      "header  header  header"
+      "sidebar content sidebar2"
+      "footer  footer  footer";
+}
+
+@media (max-width: 768px)  {
+    .contenedor {
+      grid-template-columns: 20% auto;
+      grid-template-areas:
+      "header   header"
+      "sidebar  content"
+      "sidebar2 sidebar2"
+      "footer   footer";
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor {
+      grid-template-columns: auto;
+      grid-template-areas:
+        "header"
+        "sidebar"
+        "content"
+        "sidebar2"
+        "footer";
+    }
+    .header {
+        background-color: green;
+    }
+}
+
+.box {
+    background-color: $color-gray;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 150%; 
+}
+
+/*CSS FLEXBOX*/
+
+.header, .footer {
+  background-color: #999;
+}
+
+article, aside, footer, header {
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+header {
+    margin-top: $margin-top;
+    background-color: #333;
+    color: #ccc;
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+aside {
+    background-color: white;
+}
+  
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding: 10px 0;
+}
+
+nav a {
+    flex: auto;
+    text-align: center;
+    background: #ccc;
+    color: black;
+    margin: 0 5px;
+    padding: 5px 0;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    outline: 1px solid red;
+    color: red;
+    text-decoration: underline;
+}
+  
+@media screen and (min-width: 30rem) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        max-width: 75rem;
+        margin: auto;
+    }
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        border-bottom: 0.5rem solid;
+    }
+
+    nav, header {
+        order: -1;
+    }
+
+    article {
+        flex: 75%;
+    }
+
+    aside {
+        flex: 25%;
+    }
+}
+
+.button-scope {
+    margin: 5px;
+    color: #ccc;
+    border-radius: 10px;
+    padding: 30px 50px;
+}
+
+.home-button {
+    @extend .button-scope;
+    background-color: $black;
+}
+  .back-button {
+    @extend .home-button;
+}
+
+
+@mixin alerta {
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+}
+  
+.danger {
+    @include alerta;
+    background-color: green;
+    padding-left: 40px;
+}
